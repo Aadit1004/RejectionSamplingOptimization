@@ -19,7 +19,7 @@ class BaselineSampler:
 
     def set_proposal(self):
         # generating gaussian proposal
-        self.g_mu = self.f_
+        self.g_mu = self.f_mu
         self.g_sigma = self.f_sigma * self.scale
         return self.g_mu, self.g_sigma
 
