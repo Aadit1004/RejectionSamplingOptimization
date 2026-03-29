@@ -43,3 +43,43 @@ class BaselineSampler:
         acceptance_count = len(accepted_samples)
         acceptance_rate = acceptance_count / n_samples
         return np.array(accepted_samples), acceptance_count, acceptance_rate
+
+    def vectorized_rejection_sample(self, n_samples, f_pdf):
+        # numpy batch version
+        x = np.random.normal(loc=self.g_mu, scale=self.g_sigma, size=n_samples)
+        u = np.random.rand(n_samples)
+
+        accept_prob = f_pdf(x) / (self.M * self.g_pdf(x))
+        accepted = x[u <= accept_prob]
+
+        acceptance_count = len(accepted)
+        acceptance_rate = acceptance_count / n_samples
+        return accepted, acceptance_count, acceptance_rate
+
+    def gpu_rejection_sample(self, n_samples, f_pdf):
+        # cupy/torch version
+        # TODO fix later for CUPY instead
+        import torch
+
+        if torch.cuda.is_available():
+            device = torch.device("cuda") # if gpu is nvidia
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available(): # for mac silicon users 
+            device = torch.device("mps")
+        else:
+            device = torch.device("cpu") # else use cpu
+
+        x = self.g_mu + self.g_sigma * torch.randn(n_samples, device=device)
+        u = torch.rand(n_samples, device=device)
+
+        pi = torch.tensor(torch.pi, device=device)
+        g_pdf = (1.0 / (torch.sqrt(2 * pi) * self.g_sigma)) * torch.exp(
+            -0.5 * ((x - self.g_mu) / self.g_sigma) ** 2
+        )
+
+        accept_prob = f_pdf(x) / (self.M * g_pdf)
+        accepted_samples = x[u <= accept_prob]
+
+        acceptance_count = accepted_samples.numel()
+        acceptance_rate = acceptance_count / n_samples
+
+        return accepted_samples.cpu().numpy(), acceptance_count, acceptance_rate

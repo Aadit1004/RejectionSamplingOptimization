@@ -30,8 +30,8 @@ def main():
 
     plt.figure(figsize=(10, 6))
 
-    plt.plot(x_grid, f_pdf(x_grid), label="Target f(x): N(0,1)", color="blue")
-    plt.plot(x_grid, sampler.g_pdf(x_grid), label="Proposal g(x)", linestyle="--", color="red")
+    plt.plot(x_grid, f_pdf(x_grid), label="Target f(x): N(0,1)", color="darkorange")
+    plt.plot(x_grid, sampler.g_pdf(x_grid), label="Proposal g(x)", linestyle="--", color="maroon")
     plt.plot(x_grid, M * sampler.g_pdf(x_grid), label="Proposal M * g(x)", linestyle="-.", color="black")
 
     plt.hist(
@@ -40,7 +40,7 @@ def main():
         density=True,
         alpha=0.6,
         label="Accepted samples",
-        color="limegreen"
+        color="mediumblue"
     )
 
     plt.xlabel("x")
