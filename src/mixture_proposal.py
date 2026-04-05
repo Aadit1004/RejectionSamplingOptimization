@@ -1,22 +1,20 @@
 import numpy as np
-from baseline_sampler import BaselineSampler
+from scipy.signal import find_peaks
 
 
-class MixtureProposal(BaselineSampler):
-    def __init__(self, f_mu, f_sigma, n_components=3, scale=1.5):
-        super().__init__(f_mu, f_sigma, scale)
-        self.n_components = n_components
+class MixtureProposal:
+    def __init__(self, f_pdf, scale=1.5):
+        self.f_pdf = f_pdf
+        self.scale = scale
 
         self.g_mus = None
         self.g_sigmas = None
         self.weights = None
+        self.M = None
 
     def g_pdf(self, x):
-        if self.g_mus is None:
-            self.set_proposal()
-
         density = np.zeros_like(x, dtype=float)
-        for i in range(self.n_components):
+        for i in range(len(self.g_mus)):
             gaussian = (1.0 / (np.sqrt(2 * np.pi) * self.g_sigmas[i])) * np.exp(
                 -0.5 * ((x - self.g_mus[i]) / self.g_sigmas[i]) ** 2
             )
@@ -24,29 +22,41 @@ class MixtureProposal(BaselineSampler):
 
         return density
 
-    def set_proposal(self, target_mus=None, target_weights=None):
-        if target_mus is not None:
-            self.g_mus = np.asarray(target_mus)
-            self.n_components = len(self.g_mus)
+    def set_proposal(self, x_range, height_threshold=0.01):
+        peak_mus, peak_sigmas, peak_weights = self._estimate_components_from_pdf(
+            x_range=x_range, height_threshold=height_threshold
+        )
+        self.g_mus = peak_mus
+        self.g_sigmas = peak_sigmas
+        self.weights = peak_weights
+
+    def _estimate_components_from_pdf(
+        self, x_range, n_points=1000, height_threshold=0.01
+    ):
+        x_grid = np.linspace(x_range[0], x_range[1], n_points)
+        y = self.f_pdf(x_grid)
+
+        # Find peaks
+        peaks, properties = find_peaks(y, height=height_threshold)
+
+        peak_mus = x_grid[peaks]
+        peak_heights = y[peaks]
+        peak_weights = peak_heights / np.sum(peak_heights)
+
+        # Estimate sigmas from inter-peak spacing
+        if len(peak_mus) > 1:
+            mean_spacing = np.mean(np.diff(np.sort(peak_mus)))
+            peak_sigmas = np.ones(len(peak_mus)) * mean_spacing * 0.4
         else:
-            offset_range = self.f_sigma * self.scale
-            self.g_mus = np.linspace(
-                self.f_mu - offset_range, self.f_mu + offset_range, self.n_components
-            )
+            peak_sigmas = np.ones(len(peak_mus))
 
-        self.g_sigmas = np.ones(self.n_components) * self.f_sigma * self.scale
-        if target_weights is not None:
-            self.weights = np.asarray(target_weights)
-        else:
-            self.weights = np.ones(self.n_components) / self.n_components
+        return peak_mus, peak_sigmas, peak_weights
 
-        return self.g_mus, self.g_sigmas, self.weights
-
-    def find_M(self, f_pdf, x_grid):
+    def find_M(self, x_grid):
         g_vals = self.g_pdf(x_grid)
-        f_vals = f_pdf(x_grid)
+        f_vals = self.f_pdf(x_grid)
 
-        valid_idx = g_vals > 1e-10
+        valid_idx = g_vals > 1e-8
         ratios = np.zeros_like(g_vals)
         ratios[valid_idx] = f_vals[valid_idx] / g_vals[valid_idx]
 
@@ -54,18 +64,15 @@ class MixtureProposal(BaselineSampler):
         self.M = safety_scale * np.max(ratios)
         return self.M
 
-    def rejection_sample(self, n_samples, f_pdf):
-        if self.g_mus is None:
-            self.set_proposal()
-
+    def rejection_sample(self, n_samples):
         accepted_samples = []
         for _ in range(n_samples):
-            component_idx = np.random.choice(self.n_components, p=self.weights)
+            component_idx = np.random.choice(len(self.g_mus), p=self.weights)
             x = np.random.normal(
                 loc=self.g_mus[component_idx], scale=self.g_sigmas[component_idx]
             )
             u = np.random.rand()
-            accept_prob = f_pdf(x) / (self.M * self.g_pdf(x))
+            accept_prob = self.f_pdf(x) / (self.M * self.g_pdf(x))
             if u <= accept_prob:
                 accepted_samples.append(x)
 

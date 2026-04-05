@@ -1,12 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mixture_proposal import MixtureProposal
+import random
 
 TARGET_COMPONENTS = [
-    {"mu": -3.0, "sigma": 0.6, "weight": 0.4},
-    {"mu": -1.0, "sigma": 0.4, "weight": 0.2},
-    {"mu": 2.0, "sigma": 1.0, "weight": 0.4},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
 ]
+
+# TARGET_COMPONENTS = [
+#     {"mu": 3.3801823633375037, "sigma": 1.2259708934995028, "weight": 0.4},
+#     {"mu": 1.2144718304211004, "sigma": 1.6913103339941893, "weight": 0.3},
+#     {"mu": 1.631401860122418, "sigma": 0.2633957075311475, "weight": 0.3},
+# ]  # TODO bugged corner case
 
 
 def gaussian_component(x, mu, sigma, weight):
@@ -27,33 +35,19 @@ def f_pdf(x):
 
 
 def main():
-    f_mus = [comp["mu"] for comp in TARGET_COMPONENTS]
-    f_sigmas = [comp["sigma"] for comp in TARGET_COMPONENTS]
-    f_weights = [comp["weight"] for comp in TARGET_COMPONENTS]
+    sampler = MixtureProposal(f_pdf=f_pdf)
+    sampler.set_proposal(x_range=(-10, 10), height_threshold=0.01)
 
-    sampler = MixtureProposal(
-        f_mu=0.0, f_sigma=1.0, n_components=len(TARGET_COMPONENTS), scale=1.5
-    )
-    sampler.set_proposal(target_mus=f_mus, target_weights=f_weights)
-
-    # below is largely identical to single gaussian version
-    x_grid = np.linspace(-6, 6, 10000)
-    M = sampler.find_M(f_pdf, x_grid)
+    x_grid = np.linspace(-10, 10, 10000)
+    M = sampler.find_M(x_grid)
 
     accepted_samples, acceptance_count, acceptance_rate = sampler.rejection_sample(
-        n_samples=10000, f_pdf=f_pdf
+        n_samples=10000
     )
 
-    print(f"Target: Mixture of Gaussians")
-    print(f"Target component mus: {f_mus}")
-    print(f"Target component sigmas: {f_sigmas}")
-    print(f"Target component weights: {f_weights}")
-    print(f"\nProposal: Mixture of Gaussians")
-    print(f"Number of components: {sampler.n_components}")
-    print(f"Component mus: {sampler.g_mus}")
-    print(f"Component sigmas: {sampler.g_sigmas}")
-    print(f"Component weights: {sampler.weights}")
-    print(f"\nM: {M}")
+    print(f"\nTarget: Mixture of Gaussians")
+    print(f"Target components: {TARGET_COMPONENTS}")
+    print(f"M: {M:.6f}")
     print(f"Accepted samples: {acceptance_count}")
     print(f"Acceptance rate: {acceptance_rate:.4f}")
 
