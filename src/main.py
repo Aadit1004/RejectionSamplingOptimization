@@ -73,15 +73,7 @@ def run_baseline_experiment(target_name, target_pdf, f_mu, f_sigma, x_min, x_max
         "representative_samples": representative_run["samples"],
     }
 
-def run_uniform_experiment(
-    target_name,
-    target_pdf,
-    lower,
-    upper,
-    n_samples=10000,
-    n_trials=5,
-    plot_path=None
-):
+def run_uniform_experiment(target_name, target_pdf, lower, upper, n_samples=10000, n_trials=5, plot_path=None):
     sampler = UniformSampler(lower=lower, upper=upper)
     sampler.set_proposal()
 

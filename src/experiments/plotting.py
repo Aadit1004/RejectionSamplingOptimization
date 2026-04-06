@@ -27,3 +27,8 @@ def plot_2d_contours(X, Y, Z, title="2D Target Distribution"):
     plt.xlabel("x")
     plt.ylabel("y")
     plt.show()
+
+
+
+# TODO: will need to plot comparisons for runtime between models (all combinations)
+# TODO: will need to plot comparisons for acceptance rate between models (all combinations), how to know which is best?
