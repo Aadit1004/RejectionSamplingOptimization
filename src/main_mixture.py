@@ -4,17 +4,11 @@ from mixture_proposal import MixtureProposal
 import random
 
 TARGET_COMPONENTS = [
-    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
-    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
-    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
-    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.25},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.1},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.2},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.3},
+    {"mu": random.uniform(-6, 6), "sigma": random.uniform(0.1, 2.0), "weight": 0.4},
 ]
-
-# TARGET_COMPONENTS = [
-#     {"mu": 3.3801823633375037, "sigma": 1.2259708934995028, "weight": 0.4},
-#     {"mu": 1.2144718304211004, "sigma": 1.6913103339941893, "weight": 0.3},
-#     {"mu": 1.631401860122418, "sigma": 0.2633957075311475, "weight": 0.3},
-# ]  # TODO bugged corner case
 
 
 def gaussian_component(x, mu, sigma, weight):
@@ -35,8 +29,8 @@ def f_pdf(x):
 
 
 def main():
-    sampler = MixtureProposal(f_pdf=f_pdf)
-    sampler.set_proposal(x_range=(-10, 10), height_threshold=0.01)
+    sampler = MixtureProposal(f_pdf)
+    sampler.set_proposal(x_range=(-10, 10))
 
     x_grid = np.linspace(-10, 10, 10000)
     M = sampler.find_M(x_grid)

@@ -3,7 +3,7 @@ from scipy.signal import find_peaks
 
 
 class MixtureProposal:
-    def __init__(self, f_pdf, scale=1.5):
+    def __init__(self, f_pdf, scale=2):
         self.f_pdf = f_pdf
         self.scale = scale
 
@@ -22,22 +22,18 @@ class MixtureProposal:
 
         return density
 
-    def set_proposal(self, x_range, height_threshold=0.01):
-        peak_mus, peak_sigmas, peak_weights = self._estimate_components_from_pdf(
-            x_range=x_range, height_threshold=height_threshold
-        )
+    def set_proposal(self, x_range):
+        peak_mus, peak_sigmas, peak_weights = self._estimate_peaks(x_range)
         self.g_mus = peak_mus
-        self.g_sigmas = peak_sigmas
+        self.g_sigmas = peak_sigmas * self.scale
         self.weights = peak_weights
 
-    def _estimate_components_from_pdf(
-        self, x_range, n_points=1000, height_threshold=0.01
-    ):
+    def _estimate_peaks(self, x_range, n_points=1000):
         x_grid = np.linspace(x_range[0], x_range[1], n_points)
         y = self.f_pdf(x_grid)
 
         # Find peaks
-        peaks, properties = find_peaks(y, height=height_threshold)
+        peaks, _ = find_peaks(y)
 
         peak_mus = x_grid[peaks]
         peak_heights = y[peaks]
@@ -46,7 +42,7 @@ class MixtureProposal:
         # Estimate sigmas from inter-peak spacing
         if len(peak_mus) > 1:
             mean_spacing = np.mean(np.diff(np.sort(peak_mus)))
-            peak_sigmas = np.ones(len(peak_mus)) * mean_spacing * 0.4
+            peak_sigmas = np.ones(len(peak_mus)) * mean_spacing * 0.3
         else:
             peak_sigmas = np.ones(len(peak_mus))
 
@@ -61,7 +57,8 @@ class MixtureProposal:
         ratios[valid_idx] = f_vals[valid_idx] / g_vals[valid_idx]
 
         safety_scale = 1.05
-        self.M = safety_scale * np.max(ratios)
+        safety_ceiling = np.sqrt(2 * np.pi * np.max(self.g_sigmas) ** 2)
+        self.M = min(safety_scale * np.max(ratios), safety_ceiling)
         return self.M
 
     def rejection_sample(self, n_samples):
