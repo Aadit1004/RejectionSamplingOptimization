@@ -7,6 +7,8 @@ def time_function(func, *args, **kwargs):
     elapsed = end - start
     return result, elapsed
 
+
+# dont really need this but there if want to use
 def summarize_sampling(acceptance_count, n_samples, elapsed_time):
     acceptance_rate = acceptance_count / n_samples
     return {

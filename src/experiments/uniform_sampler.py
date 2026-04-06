@@ -7,13 +7,6 @@ class UniformSampler:
         self.M = None
 
     def g_pdf(self, x):
-        '''
-        x = np.asarray(x)
-        pdf = np.zeros_like(x, dtype=float)
-        inside = (x >= self.lower) & (x <= self.upper)
-        pdf[inside] = 1.0 / (self.upper - self.lower)
-        return pdf
-        '''
         x = np.asarray(x)
         return np.where(
             (x >= self.lower) & (x <= self.upper),
