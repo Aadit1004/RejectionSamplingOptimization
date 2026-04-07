@@ -39,6 +39,3 @@ dist/
 
 # Local environment files
 .env
-
-# Figures
-figs/
