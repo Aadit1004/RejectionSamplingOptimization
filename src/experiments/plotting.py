@@ -62,6 +62,7 @@ def plot_runtime_benchmark(benchmark_cases, save_path=None, plt_title="Runtime C
     plt.xticks(x, labels, rotation=35, ha="right")
     plt.ylabel("Median runtime (s)")
     plt.title(plt_title)
+    plt.yscale("log")
     plt.legend()
     plt.grid(True, axis="y", alpha=0.3)
     plt.tight_layout()

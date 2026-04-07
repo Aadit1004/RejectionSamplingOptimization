@@ -61,7 +61,6 @@ class MixtureProposal:
         ratios[valid_idx] = f_vals[valid_idx] / g_vals[valid_idx]
 
         safety_scale = 1.05
-        # safety_ceiling = np.sqrt(2 * np.pi * np.max(self.g_sigmas) ** 2)
         self.M = safety_scale * np.max(ratios)
         return self.M
 

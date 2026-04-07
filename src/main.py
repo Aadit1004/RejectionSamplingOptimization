@@ -1,4 +1,5 @@
 import numpy as np
+from pathlib import Path
 from baseline_sampler import BaselineSampler
 from uniform_sampler import UniformSampler
 from two_dim_sampler import GaussianSampler2D
@@ -303,8 +304,7 @@ def run_whitening_experiment():
 def gpu_available():
     try:
         import cupy as cp
-        _ = cp.cuda.runtime.getDeviceCount()
-        return True
+        return cp.cuda.runtime.getDeviceCount() > 0
     except Exception:
         return False
 
@@ -540,6 +540,9 @@ def run_runtime_benchmarks(n_samples=300000, n_trials=5, plot_path="../figs/runt
     return benchmark_cases
 
 def main():
+    figs_dir = Path.cwd().parent / "figs"
+    figs_dir.mkdir(parents=True, exist_ok=True)
+
     # baseline sampler experiments on single gaussian, bimodel, and multimodal
     baseline_results = []
 
@@ -649,11 +652,7 @@ def main():
     run_whitening_experiment()
 
     # high-sample runtime benchmarks
-    run_runtime_benchmarks(
-        n_samples=300000,
-        n_trials=5,
-        plot_path="../figs/runtime_benchmark.png"
-    )
+    run_runtime_benchmarks(n_samples=50000, n_trials=5, plot_path="../figs/runtime_benchmark.png")
 
 if __name__ == "__main__":
     main()

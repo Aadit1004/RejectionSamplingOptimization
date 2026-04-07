@@ -38,7 +38,7 @@ class BaselineSampler:
 
             accept_prob = f_pdf(x) / (self.M * self.g_pdf(x))
             if u <= accept_prob:
-                accepted_samples.append(x);
+                accepted_samples.append(x)
 
         acceptance_count = len(accepted_samples)
         acceptance_rate = acceptance_count / n_samples
