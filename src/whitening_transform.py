@@ -38,8 +38,8 @@ class WhitenedGaussianSampler2D:
     def sample_proposal(self, n_samples):
         return np.random.normal(loc=0.0, scale=self.scale, size=(n_samples, 2))
 
-    def find_M(self, Y_grid, target_pdf):
-        ratios = target_pdf(Y_grid) / self.g_pdf(Y_grid)
+    def find_M(self, Y_grid):
+        ratios = self.target_pdf_y(Y_grid) / self.g_pdf(Y_grid)
         self.M = 1.05 * np.max(ratios)
         return self.M
 

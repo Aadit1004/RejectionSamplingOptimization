@@ -3,8 +3,9 @@ from scipy.signal import find_peaks
 
 
 class MixtureProposal:
-    def __init__(self, f_pdf, scale=2):
+    def __init__(self, f_pdf, scale=1.3, f_pdf_cupy=None):
         self.f_pdf = f_pdf
+        self.f_pdf_cupy = f_pdf_cupy
         self.scale = scale
 
         self.g_mus = None
