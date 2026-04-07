@@ -70,6 +70,3 @@ def plot_runtime_benchmark(benchmark_cases, save_path=None, plt_title="Runtime C
         plt.savefig(save_path, bbox_inches="tight")
 
     plt.show()
-
-# TODO: will need to plot comparisons for runtime between models (all combinations)
-# TODO: will need to plot comparisons for acceptance rate between models (all combinations), how to know which is best?
