@@ -7,7 +7,7 @@ This project explores several ways to improve rejection sampling efficiency thro
 Make sure Python is installed, along with the required libraries:
 
 ```
-pip install numpy matplotlib cupy
+pip install numpy matplotlib cupy scipy
 ```
 
 Then move into the `src` directory and run:
