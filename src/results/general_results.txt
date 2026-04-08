@@ -1,0 +1,98 @@
+=== Gaussian Target ===
+Proposal mean: 0.0
+Proposal sigma: 1.5
+M: 1.575000
+Median accepted samples: 6338
+Median acceptance rate: 0.6338
+Median runtime (s): 0.038394
+Runtime std (s): 0.000100
+
+=== Bimodal Target ===
+Proposal mean: 0.0
+Proposal sigma: 3.0
+M: 2.426808
+Median accepted samples: 4139
+Median acceptance rate: 0.4139
+Median runtime (s): 0.060686
+Runtime std (s): 0.009472
+
+=== Complex Multimodal Target ===
+Proposal mean: 0.0
+Proposal sigma: 4.5
+M: 3.130909
+Median accepted samples: 3180
+Median acceptance rate: 0.3180
+Median runtime (s): 0.087049
+Runtime std (s): 0.008725
+
+=== Gaussian Target (Uniform Proposal) ===
+Proposal lower: -6
+Proposal upper: 6
+M: 5.026672
+Median accepted samples: 1984
+Median acceptance rate: 0.1984
+Median runtime (s): 0.124823
+Runtime std (s): 0.022067
+
+=== Bimodal Target (Uniform Proposal) ===
+Proposal lower: -8
+Proposal upper: 8
+M: 4.021338
+Median accepted samples: 2497
+Median acceptance rate: 0.2497
+Median runtime (s): 0.125470
+Runtime std (s): 0.012918
+
+=== Complex Multimodal Target (Uniform Proposal) ===
+Proposal lower: -8
+Proposal upper: 8
+M: 3.747252
+Median accepted samples: 2695
+Median acceptance rate: 0.2695
+Median runtime (s): 0.160497
+Runtime std (s): 0.011330
+
+=== Gaussian Target (Mixture Gaussian Proposal) ===
+Detected proposal components: 1
+Proposal means: [-0.00600601]
+Proposal sigmas: [1.3]
+Proposal weights: [1.]
+M: 1.365036
+Median accepted samples: 7347
+Median acceptance rate: 0.7347
+Median runtime (s): 0.359550
+Runtime std (s): 0.034781
+
+=== Bimodal Target (Mixture Gaussian Proposal) ===
+Detected proposal components: 2
+Proposal means: [-1.99399399  1.99399399]
+Proposal sigmas: [1.55531532 1.55531532]
+Proposal weights: [0.4878903 0.5121097]
+M: 1.852972
+Median accepted samples: 5370
+Median acceptance rate: 0.5370
+Median runtime (s): 0.418829
+Runtime std (s): 0.019634
+
+=== Complex Multimodal Target (Mixture Gaussian Proposal) ===
+Detected proposal components: 5
+Proposal means: [-4.66866867 -3.0990991  -0.32832833  1.06506507  3.8998999 ]
+Proposal sigmas: [0.83543544 0.83543544 0.83543544 0.83543544 0.83543544]
+Proposal weights: [0.19729786 0.10242464 0.28630275 0.24752017 0.16645458]
+M: 1.705009
+Median accepted samples: 5844
+Median acceptance rate: 0.5844
+Median runtime (s): 0.532733
+Runtime std (s): 0.024246
+
+=== 2D Baseline (No Whitening) ===
+M: 10.559374
+Accepted samples: 4650
+Acceptance rate: 0.0930
+Runtime (s): 0.015183
+
+=== 2D Whitening ===
+M: 2.361307
+Accepted samples: 21068
+Acceptance rate: 0.4214
+Runtime (s): 0.010617

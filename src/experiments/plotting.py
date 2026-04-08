@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 
 def plot_1d_sampling_result(x_grid, target_pdf, proposal_pdf, envelope_pdf, samples, save_path=None, plt_title="Rejection Sampling"):
     plt.figure(figsize=(10, 6))
-    plt.plot(x_grid, target_pdf, label="Target f(x)")
-    plt.plot(x_grid, proposal_pdf, label="Proposal g(x)", linestyle="--")
-    plt.plot(x_grid, envelope_pdf, label="Proposal M * g(x)", linestyle="-.")
-    plt.hist(samples, bins=50, density=True, alpha=0.6, label="Accepted samples")
+    plt.plot(x_grid, target_pdf, label="Target f(x)", color="tab:blue", linewidth=2.5)
+    plt.plot(x_grid, proposal_pdf, label="Proposal g(x)", color="tab:purple", linestyle="--", linewidth=2.5)
+    plt.plot(x_grid, envelope_pdf, label="Proposal M * g(x)", color="tab:green", linestyle="-.", linewidth=2.5)
+    plt.hist(samples, bins=50, density=True, alpha=0.6, label="Accepted samples", color="indianred")
 
     plt.xlabel("x")
     plt.ylabel("Density")

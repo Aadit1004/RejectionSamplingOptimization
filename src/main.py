@@ -652,7 +652,13 @@ def main():
     run_whitening_experiment()
 
     # high-sample runtime benchmarks
-    run_runtime_benchmarks(n_samples=50000, n_trials=5, plot_path="../figs/runtime_benchmark.png")
+    # Uncomment to run if cuda capable gpu, can be very slow to test
+    '''
+    run_runtime_benchmarks(n_samples=10000, n_trials=5, plot_path="../figs/runtime_benchmark_10000.png")
+    run_runtime_benchmarks(n_samples=50000, n_trials=5, plot_path="../figs/runtime_benchmark_50000.png")
+    run_runtime_benchmarks(n_samples=100000, n_trials=5, plot_path="../figs/runtime_benchmark_100000.png")
+    run_runtime_benchmarks(n_samples=300000, n_trials=5, plot_path="../figs/runtime_benchmark_300000.png")
+    '''
 
 if __name__ == "__main__":
     main()

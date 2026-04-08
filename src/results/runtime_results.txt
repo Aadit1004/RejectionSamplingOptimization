@@ -1,0 +1,767 @@
+Benchmark sample count: 10000
+Trials per method: 5
+
+=== Benchmark: Baseline
+Gaussian ===
+Sequential:
+  Median runtime (s): 0.038252
+  Runtime std (s): 0.022028
+  Median acceptance rate: 0.6370
+  Median accepted samples: 6370
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.000580
+  Runtime std (s): 0.000035
+  Median acceptance rate: 0.6360
+  Median accepted samples: 6360
+  Speedup vs sequential: 65.91x
+GPU:
+  Median runtime (s): 0.001198
+  Runtime std (s): 0.262790
+  Median acceptance rate: 0.6338
+  Median accepted samples: 6338
+  Speedup vs sequential: 31.93x
+
+=== Benchmark: Baseline
+Bimodal ===
+Sequential:
+  Median runtime (s): 0.051439
+  Runtime std (s): 0.000734
+  Median acceptance rate: 0.4174
+  Median accepted samples: 4174
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.000648
+  Runtime std (s): 0.000010
+  Median acceptance rate: 0.4110
+  Median accepted samples: 4110
+  Speedup vs sequential: 79.36x
+GPU:
+  Median runtime (s): 0.001463
+  Runtime std (s): 0.003358
+  Median acceptance rate: 0.4133
+  Median accepted samples: 4133
+  Speedup vs sequential: 35.15x
+
+=== Benchmark: Baseline
+Multimodal ===
+Sequential:
+  Median runtime (s): 0.084602
+  Runtime std (s): 0.000282
+  Median acceptance rate: 0.3173
+  Median accepted samples: 3173
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.000930
+  Runtime std (s): 0.000024
+  Median acceptance rate: 0.3180
+  Median accepted samples: 3180
+  Speedup vs sequential: 90.92x
+GPU:
+  Median runtime (s): 0.002515
+  Runtime std (s): 0.000106
+  Median acceptance rate: 0.3213
+  Median accepted samples: 3213
+  Speedup vs sequential: 33.64x
+
+=== Benchmark: Uniform
+Gaussian ===
+Sequential:
+  Median runtime (s): 0.109890
+  Runtime std (s): 0.000966
+  Median acceptance rate: 0.1967
+  Median accepted samples: 1967
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.000326
+  Runtime std (s): 0.000010
+  Median acceptance rate: 0.1968
+  Median accepted samples: 1968
+  Speedup vs sequential: 337.60x
+GPU:
+  Median runtime (s): 0.000872
+  Runtime std (s): 0.006966
+  Median acceptance rate: 0.1993
+  Median accepted samples: 1993
+  Speedup vs sequential: 125.98x
+
+=== Benchmark: Uniform
+Bimodal ===
+Sequential:
+  Median runtime (s): 0.123031
+  Runtime std (s): 0.000316
+  Median acceptance rate: 0.2480
+  Median accepted samples: 2480
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.000421
+  Runtime std (s): 0.000009
+  Median acceptance rate: 0.2504
+  Median accepted samples: 2504
+  Speedup vs sequential: 292.03x
+GPU:
+  Median runtime (s): 0.001252
+  Runtime std (s): 0.000109
+  Median acceptance rate: 0.2500
+  Median accepted samples: 2500
+  Speedup vs sequential: 98.26x
+
+=== Benchmark: Uniform
+Multimodal ===
+Sequential:
+  Median runtime (s): 0.157550
+  Runtime std (s): 0.000286
+  Median acceptance rate: 0.2685
+  Median accepted samples: 2685
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.000699
+  Runtime std (s): 0.000009
+  Median acceptance rate: 0.2670
+  Median accepted samples: 2670
+  Speedup vs sequential: 225.30x
+GPU:
+  Median runtime (s): 0.002286
+  Runtime std (s): 0.000117
+  Median acceptance rate: 0.2694
+  Median accepted samples: 2694
+  Speedup vs sequential: 68.92x
+
+=== Benchmark: Mixture
+Gaussian ===
+Sequential:
+  Median runtime (s): 0.346877
+  Runtime std (s): 0.000928
+  Median acceptance rate: 0.7354
+  Median accepted samples: 7354
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.000973
+  Runtime std (s): 0.000028
+  Median acceptance rate: 0.7306
+  Median accepted samples: 7306
+  Speedup vs sequential: 356.47x
+GPU:
+  Median runtime (s): 0.002441
+  Runtime std (s): 0.042400
+  Median acceptance rate: 0.7337
+  Median accepted samples: 7337
+  Speedup vs sequential: 142.09x
+
+=== Benchmark: Mixture
+Bimodal ===
+Sequential:
+  Median runtime (s): 0.390014
+  Runtime std (s): 0.001117
+  Median acceptance rate: 0.5467
+  Median accepted samples: 5467
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.001191
+  Runtime std (s): 0.000037
+  Median acceptance rate: 0.5403
+  Median accepted samples: 5403
+  Speedup vs sequential: 327.39x
+GPU:
+  Median runtime (s): 0.003024
+  Runtime std (s): 0.000178
+  Median acceptance rate: 0.5427
+  Median accepted samples: 5427
+  Speedup vs sequential: 128.97x
+
+=== Benchmark: Mixture
+Multimodal ===
+Sequential:
+  Median runtime (s): 0.527929
+  Runtime std (s): 0.000951
+  Median acceptance rate: 0.5867
+  Median accepted samples: 5867
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.001760
+  Runtime std (s): 0.000020
+  Median acceptance rate: 0.5946
+  Median accepted samples: 5946
+  Speedup vs sequential: 299.99x
+GPU:
+  Median runtime (s): 0.005139
+  Runtime std (s): 0.000181
+  Median acceptance rate: 0.5854
+  Median accepted samples: 5854
+  Speedup vs sequential: 102.73x
+
+Benchmark sample count: 50000
+Trials per method: 5
+
+=== Benchmark: Baseline
+Gaussian ===
+Sequential:
+  Median runtime (s): 0.200916
+  Runtime std (s): 0.026767
+  Median acceptance rate: 0.6340
+  Median accepted samples: 31698
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.002730
+  Runtime std (s): 0.000195
+  Median acceptance rate: 0.6351
+  Median accepted samples: 31756
+  Speedup vs sequential: 73.58x
+GPU:
+  Median runtime (s): 0.001121
+  Runtime std (s): 0.000274
+  Median acceptance rate: 0.6349
+  Median accepted samples: 31744
+  Speedup vs sequential: 179.17x
+
+=== Benchmark: Baseline
+Bimodal ===
+Sequential:
+  Median runtime (s): 0.254962
+  Runtime std (s): 0.001123
+  Median acceptance rate: 0.4121
+  Median accepted samples: 20604
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.003156
+  Runtime std (s): 0.000030
+  Median acceptance rate: 0.4131
+  Median accepted samples: 20654
+  Speedup vs sequential: 80.80x
+GPU:
+  Median runtime (s): 0.001490
+  Runtime std (s): 0.000101
+  Median acceptance rate: 0.4128
+  Median accepted samples: 20641
+  Speedup vs sequential: 171.14x
+
+=== Benchmark: Baseline
+Multimodal ===
+Sequential:
+  Median runtime (s): 0.420406
+  Runtime std (s): 0.003380
+  Median acceptance rate: 0.3208
+  Median accepted samples: 16042
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.004479
+  Runtime std (s): 0.000028
+  Median acceptance rate: 0.3213
+  Median accepted samples: 16063
+  Speedup vs sequential: 93.87x
+GPU:
+  Median runtime (s): 0.002551
+  Runtime std (s): 0.000138
+  Median acceptance rate: 0.3209
+  Median accepted samples: 16044
+  Speedup vs sequential: 164.77x
+
+=== Benchmark: Uniform
+Gaussian ===
+Sequential:
+  Median runtime (s): 0.550198
+  Runtime std (s): 0.001290
+  Median acceptance rate: 0.1975
+  Median accepted samples: 9875
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.001501
+  Runtime std (s): 0.000058
+  Median acceptance rate: 0.1977
+  Median accepted samples: 9887
+  Speedup vs sequential: 366.46x
+GPU:
+  Median runtime (s): 0.000870
+  Runtime std (s): 0.000114
+  Median acceptance rate: 0.1994
+  Median accepted samples: 9969
+  Speedup vs sequential: 632.70x
+
+=== Benchmark: Uniform
+Bimodal ===
+Sequential:
+  Median runtime (s): 0.620246
+  Runtime std (s): 0.002372
+  Median acceptance rate: 0.2483
+  Median accepted samples: 12414
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.001964
+  Runtime std (s): 0.000027
+  Median acceptance rate: 0.2486
+  Median accepted samples: 12430
+  Speedup vs sequential: 315.76x
+GPU:
+  Median runtime (s): 0.001278
+  Runtime std (s): 0.000099
+  Median acceptance rate: 0.2487
+  Median accepted samples: 12437
+  Speedup vs sequential: 485.44x
+
+=== Benchmark: Uniform
+Multimodal ===
+Sequential:
+  Median runtime (s): 0.790753
+  Runtime std (s): 0.001056
+  Median acceptance rate: 0.2671
+  Median accepted samples: 13356
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.003253
+  Runtime std (s): 0.000026
+  Median acceptance rate: 0.2691
+  Median accepted samples: 13456
+  Speedup vs sequential: 243.08x
+GPU:
+  Median runtime (s): 0.002322
+  Runtime std (s): 0.000107
+  Median acceptance rate: 0.2696
+  Median accepted samples: 13479
+  Speedup vs sequential: 340.56x
+
+=== Benchmark: Mixture
+Gaussian ===
+Sequential:
+  Median runtime (s): 1.747428
+  Runtime std (s): 0.003486
+  Median acceptance rate: 0.7316
+  Median accepted samples: 36582
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.004429
+  Runtime std (s): 0.000152
+  Median acceptance rate: 0.7324
+  Median accepted samples: 36619
+  Speedup vs sequential: 394.56x
+GPU:
+  Median runtime (s): 0.002283
+  Runtime std (s): 0.000346
+  Median acceptance rate: 0.7327
+  Median accepted samples: 36633
+  Speedup vs sequential: 765.38x
+
+=== Benchmark: Mixture
+Bimodal ===
+Sequential:
+  Median runtime (s): 1.967749
+  Runtime std (s): 0.005829
+  Median acceptance rate: 0.5400
+  Median accepted samples: 26998
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.005537
+  Runtime std (s): 0.000046
+  Median acceptance rate: 0.5426
+  Median accepted samples: 27130
+  Speedup vs sequential: 355.36x
+GPU:
+  Median runtime (s): 0.003057
+  Runtime std (s): 0.000208
+  Median acceptance rate: 0.5383
+  Median accepted samples: 26913
+  Speedup vs sequential: 643.64x
+
+=== Benchmark: Mixture
+Multimodal ===
+Sequential:
+  Median runtime (s): 2.661133
+  Runtime std (s): 0.005502
+  Median acceptance rate: 0.5859
+  Median accepted samples: 29295
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.008272
+  Runtime std (s): 0.000024
+  Median acceptance rate: 0.5871
+  Median accepted samples: 29354
+  Speedup vs sequential: 321.71x
+GPU:
+  Median runtime (s): 0.005112
+  Runtime std (s): 0.000212
+  Median acceptance rate: 0.5872
+  Median accepted samples: 29359
+  Speedup vs sequential: 520.54x
+
+Benchmark sample count: 100000
+Trials per method: 5
+
+=== Benchmark: Baseline
+Gaussian ===
+Sequential:
+  Median runtime (s): 0.390795
+  Runtime std (s): 0.039187
+  Median acceptance rate: 0.6350
+  Median accepted samples: 63502
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.005500
+  Runtime std (s): 0.000219
+  Median acceptance rate: 0.6352
+  Median accepted samples: 63516
+  Speedup vs sequential: 71.06x
+GPU:
+  Median runtime (s): 0.001211
+  Runtime std (s): 0.000313
+  Median acceptance rate: 0.6347
+  Median accepted samples: 63473
+  Speedup vs sequential: 322.57x
+
+=== Benchmark: Baseline
+Bimodal ===
+Sequential:
+  Median runtime (s): 0.521473
+  Runtime std (s): 0.004290
+  Median acceptance rate: 0.4126
+  Median accepted samples: 41262
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.006276
+  Runtime std (s): 0.000129
+  Median acceptance rate: 0.4115
+  Median accepted samples: 41153
+  Speedup vs sequential: 83.09x
+GPU:
+  Median runtime (s): 0.001531
+  Runtime std (s): 0.000091
+  Median acceptance rate: 0.4117
+  Median accepted samples: 41173
+  Speedup vs sequential: 340.72x
+
+=== Benchmark: Baseline
+Multimodal ===
+Sequential:
+  Median runtime (s): 0.860217
+  Runtime std (s): 0.010336
+  Median acceptance rate: 0.3197
+  Median accepted samples: 31974
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.008954
+  Runtime std (s): 0.000163
+  Median acceptance rate: 0.3187
+  Median accepted samples: 31867
+  Speedup vs sequential: 96.08x
+GPU:
+  Median runtime (s): 0.002500
+  Runtime std (s): 0.000182
+  Median acceptance rate: 0.3198
+  Median accepted samples: 31983
+  Speedup vs sequential: 344.14x
+
+=== Benchmark: Uniform
+Gaussian ===
+Sequential:
+  Median runtime (s): 1.093275
+  Runtime std (s): 0.002831
+  Median acceptance rate: 0.1979
+  Median accepted samples: 19787
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.002967
+  Runtime std (s): 0.000066
+  Median acceptance rate: 0.2002
+  Median accepted samples: 20019
+  Speedup vs sequential: 368.45x
+GPU:
+  Median runtime (s): 0.000911
+  Runtime std (s): 0.000103
+  Median acceptance rate: 0.1991
+  Median accepted samples: 19908
+  Speedup vs sequential: 1200.61x
+
+=== Benchmark: Uniform
+Bimodal ===
+Sequential:
+  Median runtime (s): 1.238452
+  Runtime std (s): 0.003267
+  Median acceptance rate: 0.2488
+  Median accepted samples: 24885
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.003903
+  Runtime std (s): 0.000053
+  Median acceptance rate: 0.2468
+  Median accepted samples: 24680
+  Speedup vs sequential: 317.31x
+GPU:
+  Median runtime (s): 0.001275
+  Runtime std (s): 0.000107
+  Median acceptance rate: 0.2491
+  Median accepted samples: 24912
+  Speedup vs sequential: 971.64x
+
+=== Benchmark: Uniform
+Multimodal ===
+Sequential:
+  Median runtime (s): 1.576791
+  Runtime std (s): 0.002705
+  Median acceptance rate: 0.2658
+  Median accepted samples: 26582
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.006620
+  Runtime std (s): 0.000117
+  Median acceptance rate: 0.2659
+  Median accepted samples: 26590
+  Speedup vs sequential: 238.19x
+GPU:
+  Median runtime (s): 0.002308
+  Runtime std (s): 0.000122
+  Median acceptance rate: 0.2675
+  Median accepted samples: 26745
+  Speedup vs sequential: 683.24x
+
+=== Benchmark: Mixture
+Gaussian ===
+Sequential:
+  Median runtime (s): 3.471756
+  Runtime std (s): 0.005283
+  Median acceptance rate: 0.7312
+  Median accepted samples: 73123
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.008836
+  Runtime std (s): 0.000132
+  Median acceptance rate: 0.7317
+  Median accepted samples: 73173
+  Speedup vs sequential: 392.90x
+GPU:
+  Median runtime (s): 0.002390
+  Runtime std (s): 0.000363
+  Median acceptance rate: 0.7321
+  Median accepted samples: 73211
+  Speedup vs sequential: 1452.68x
+
+=== Benchmark: Mixture
+Bimodal ===
+Sequential:
+  Median runtime (s): 3.941167
+  Runtime std (s): 0.134616
+  Median acceptance rate: 0.5394
+  Median accepted samples: 53943
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.012360
+  Runtime std (s): 0.000317
+  Median acceptance rate: 0.5407
+  Median accepted samples: 54074
+  Speedup vs sequential: 318.88x
+GPU:
+  Median runtime (s): 0.003116
+  Runtime std (s): 0.000247
+  Median acceptance rate: 0.5397
+  Median accepted samples: 53969
+  Speedup vs sequential: 1264.94x
+
+=== Benchmark: Mixture
+Multimodal ===
+Sequential:
+  Median runtime (s): 5.794007
+  Runtime std (s): 0.212027
+  Median acceptance rate: 0.5866
+  Median accepted samples: 58656
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.016945
+  Runtime std (s): 0.000213
+  Median acceptance rate: 0.5873
+  Median accepted samples: 58731
+  Speedup vs sequential: 341.94x
+GPU:
+  Median runtime (s): 0.005112
+  Runtime std (s): 0.000194
+  Median acceptance rate: 0.5875
+  Median accepted samples: 58752
+  Speedup vs sequential: 1133.30x
+
+Benchmark sample count: 300000
+Trials per method: 5
+
+=== Benchmark: Baseline
+Gaussian ===
+Sequential:
+  Median runtime (s): 1.159149
+  Runtime std (s): 0.048025
+  Median acceptance rate: 0.6351
+  Median accepted samples: 190531
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.023935
+  Runtime std (s): 0.000215
+  Median acceptance rate: 0.6348
+  Median accepted samples: 190443
+  Speedup vs sequential: 48.43x
+GPU:
+  Median runtime (s): 0.002760
+  Runtime std (s): 0.379321
+  Median acceptance rate: 0.6349
+  Median accepted samples: 190455
+  Speedup vs sequential: 419.97x
+
+=== Benchmark: Baseline
+Bimodal ===
+Sequential:
+  Median runtime (s): 1.568256
+  Runtime std (s): 0.008322
+  Median acceptance rate: 0.4123
+  Median accepted samples: 123696
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.030666
+  Runtime std (s): 0.000208
+  Median acceptance rate: 0.4117
+  Median accepted samples: 123495
+  Speedup vs sequential: 51.14x
+GPU:
+  Median runtime (s): 0.003198
+  Runtime std (s): 0.000181
+  Median acceptance rate: 0.4116
+  Median accepted samples: 123491
+  Speedup vs sequential: 490.45x
+
+=== Benchmark: Baseline
+Multimodal ===
+Sequential:
+  Median runtime (s): 2.597351
+  Runtime std (s): 0.027445
+  Median acceptance rate: 0.3203
+  Median accepted samples: 96082
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.050313
+  Runtime std (s): 0.000594
+  Median acceptance rate: 0.3189
+  Median accepted samples: 95656
+  Speedup vs sequential: 51.62x
+GPU:
+  Median runtime (s): 0.005512
+  Runtime std (s): 0.000205
+  Median acceptance rate: 0.3195
+  Median accepted samples: 95857
+  Speedup vs sequential: 471.19x
+
+=== Benchmark: Uniform
+Gaussian ===
+Sequential:
+  Median runtime (s): 3.426220
+  Runtime std (s): 0.067460
+  Median acceptance rate: 0.1994
+  Median accepted samples: 59817
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.014591
+  Runtime std (s): 0.000297
+  Median acceptance rate: 0.1992
+  Median accepted samples: 59750
+  Speedup vs sequential: 234.81x
+GPU:
+  Median runtime (s): 0.001504
+  Runtime std (s): 0.000076
+  Median acceptance rate: 0.1992
+  Median accepted samples: 59751
+  Speedup vs sequential: 2278.22x
+
+=== Benchmark: Uniform
+Bimodal ===
+Sequential:
+  Median runtime (s): 4.100386
+  Runtime std (s): 0.110819
+  Median acceptance rate: 0.2485
+  Median accepted samples: 74540
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.023492
+  Runtime std (s): 0.000512
+  Median acceptance rate: 0.2481
+  Median accepted samples: 74422
+  Speedup vs sequential: 174.54x
+GPU:
+  Median runtime (s): 0.002331
+  Runtime std (s): 0.000124
+  Median acceptance rate: 0.2484
+  Median accepted samples: 74518
+  Speedup vs sequential: 1759.37x
+
+=== Benchmark: Uniform
+Multimodal ===
+Sequential:
+  Median runtime (s): 5.020754
+  Runtime std (s): 0.138659
+  Median acceptance rate: 0.2676
+  Median accepted samples: 80288
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.043481
+  Runtime std (s): 0.000610
+  Median acceptance rate: 0.2668
+  Median accepted samples: 80053
+  Speedup vs sequential: 115.47x
+GPU:
+  Median runtime (s): 0.004725
+  Runtime std (s): 0.000083
+  Median acceptance rate: 0.2674
+  Median accepted samples: 80219
+  Speedup vs sequential: 1062.66x
+
+=== Benchmark: Mixture
+Gaussian ===
+Sequential:
+  Median runtime (s): 10.420515
+  Runtime std (s): 0.020226
+  Median acceptance rate: 0.7319
+  Median accepted samples: 219574
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.040186
+  Runtime std (s): 0.001989
+  Median acceptance rate: 0.7320
+  Median accepted samples: 219608
+  Speedup vs sequential: 259.31x
+GPU:
+  Median runtime (s): 0.003822
+  Runtime std (s): 0.000232
+  Median acceptance rate: 0.7326
+  Median accepted samples: 219793
+  Speedup vs sequential: 2726.74x
+
+=== Benchmark: Mixture
+Bimodal ===
+Sequential:
+  Median runtime (s): 11.776648
+  Runtime std (s): 0.015524
+  Median acceptance rate: 0.5395
+  Median accepted samples: 161837
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.051669
+  Runtime std (s): 0.000207
+  Median acceptance rate: 0.5395
+  Median accepted samples: 161852
+  Speedup vs sequential: 227.92x
+GPU:
+  Median runtime (s): 0.005336
+  Runtime std (s): 0.000184
+  Median acceptance rate: 0.5400
+  Median accepted samples: 161988
+  Speedup vs sequential: 2206.89x
+
+=== Benchmark: Mixture
+Multimodal ===
+Sequential:
+  Median runtime (s): 18.007998
+  Runtime std (s): 1.920745
+  Median acceptance rate: 0.5867
+  Median accepted samples: 176016
+  Speedup vs sequential: 1.00x
+Vectorized:
+  Median runtime (s): 0.116421
+  Runtime std (s): 0.006609
+  Median acceptance rate: 0.5864
+  Median accepted samples: 175919
+  Speedup vs sequential: 154.68x
+GPU:
+  Median runtime (s): 0.010404
+  Runtime std (s): 0.000173
+  Median acceptance rate: 0.5864
+  Median accepted samples: 175930
+  Speedup vs sequential: 1730.94x
