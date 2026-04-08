@@ -1,4 +1,5 @@
 import numpy as np
+import argparse
 from pathlib import Path
 from baseline_sampler import BaselineSampler
 from uniform_sampler import UniformSampler
@@ -539,7 +540,7 @@ def run_runtime_benchmarks(n_samples=300000, n_trials=5, plot_path="../figs/runt
 
     return benchmark_cases
 
-def main():
+def main(run_gpu_benchmarks=False):
     figs_dir = Path.cwd().parent / "figs"
     figs_dir.mkdir(parents=True, exist_ok=True)
 
@@ -652,13 +653,14 @@ def main():
     run_whitening_experiment()
 
     # high-sample runtime benchmarks
-    # Uncomment to run if cuda capable gpu, can be very slow to test
-    '''
-    run_runtime_benchmarks(n_samples=10000, n_trials=5, plot_path="../figs/runtime_benchmark_10000.png")
-    run_runtime_benchmarks(n_samples=50000, n_trials=5, plot_path="../figs/runtime_benchmark_50000.png")
-    run_runtime_benchmarks(n_samples=100000, n_trials=5, plot_path="../figs/runtime_benchmark_100000.png")
-    run_runtime_benchmarks(n_samples=300000, n_trials=5, plot_path="../figs/runtime_benchmark_300000.png")
-    '''
+    if run_gpu_benchmarks:
+        run_runtime_benchmarks(n_samples=10000, n_trials=5, plot_path="../figs/runtime_benchmark_10000.png")
+        run_runtime_benchmarks(n_samples=50000, n_trials=5, plot_path="../figs/runtime_benchmark_50000.png")
+        run_runtime_benchmarks(n_samples=100000, n_trials=5, plot_path="../figs/runtime_benchmark_100000.png")
+        run_runtime_benchmarks(n_samples=300000, n_trials=5, plot_path="../figs/runtime_benchmark_300000.png")
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--benchmarks", action="store_true", help="Run high-sample runtime benchmarks")
+    args = parser.parse_args()
+    main(run_gpu_benchmarks=args.benchmarks)
